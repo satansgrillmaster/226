@@ -5,11 +5,26 @@ public class Main {
     public static void main(String[] args){
 
         Cat mogli = new Cat("tiger","Mogli");
+        QueueList<String> queueList = new QueueList<>(2);
 
-        mogli.eat();
-        mogli.sleep();
+        queueList.push("eis");
+        queueList.push("zwei");
+        try{
+            queueList.push("drei");
+        }
+        catch (QueueList.QueueFullException e){
+            System.out.println("Queue is full");
+        }
 
-        System.out.println(mogli.getName());
-        System.out.println(args[0]);
+        System.out.println(queueList.pop());
+        System.out.println(queueList.pop());
+
+        try{
+            System.out.println(queueList.pop());
+        }
+        catch (QueueList.QueueEmptyException e){
+            System.out.println("Queue is empty");
+        }
+
     }
 }
